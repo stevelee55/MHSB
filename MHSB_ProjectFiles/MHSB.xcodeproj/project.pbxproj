@@ -14,7 +14,7 @@
 		9D3C4EDB1F59117B00BA0C15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D3C4EDA1F59117B00BA0C15 /* Assets.xcassets */; };
 		9D3C4EDE1F59117B00BA0C15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D3C4EDC1F59117B00BA0C15 /* LaunchScreen.storyboard */; };
 		9D3C4EEA1F59171C00BA0C15 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C4EE91F59171C00BA0C15 /* MainModel.swift */; };
-		9DB2E4B61F89FF8E00A3739E /* MHS_0.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9DB2E4B51F89FF8C00A3739E /* MHS_0.csv */; };
+		9DFE3FFA1F9A50A200B18D78 /* MHS_0.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9DFE3FF91F9A488400B18D78 /* MHS_0.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		9D3C4EDD1F59117B00BA0C15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D3C4EDF1F59117B00BA0C15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D3C4EE91F59171C00BA0C15 /* MainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
-		9DB2E4B51F89FF8C00A3739E /* MHS_0.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = MHS_0.csv; path = ../../MHS_0.csv; sourceTree = "<group>"; };
+		9DFE3FF91F9A488400B18D78 /* MHS_0.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = MHS_0.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +68,7 @@
 				9D3C4EDC1F59117B00BA0C15 /* LaunchScreen.storyboard */,
 				9D3C4EDF1F59117B00BA0C15 /* Info.plist */,
 				9D3C4ED71F59117B00BA0C15 /* MHSB.xcdatamodeld */,
-				9DB2E4B51F89FF8C00A3739E /* MHS_0.csv */,
+				9DFE3FF91F9A488400B18D78 /* MHS_0.csv */,
 			);
 			path = MHSB;
 			sourceTree = "<group>";
@@ -136,7 +136,7 @@
 			files = (
 				9D3C4EDE1F59117B00BA0C15 /* LaunchScreen.storyboard in Resources */,
 				9D3C4EDB1F59117B00BA0C15 /* Assets.xcassets in Resources */,
-				9DB2E4B61F89FF8E00A3739E /* MHS_0.csv in Resources */,
+				9DFE3FFA1F9A50A200B18D78 /* MHS_0.csv in Resources */,
 				9D3C4ED61F59117B00BA0C15 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

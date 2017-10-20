@@ -30,6 +30,8 @@ struct MainModel {
     //Adding new spreadsheet data from email.
     //Change the parameter later when implementing email import feature.
     mutating func addNewData() {
+        //This is where the imported file from the email is passed in.
+        
         //Dummy values.
         //TEMPPPPPPPPPPPPPP
         let path = Bundle.main.path(forResource: "MHS_0", ofType: "csv")
@@ -46,8 +48,6 @@ struct MainModel {
         } catch {
             print("Corrupted File");
         }*/
-          
-        
     }
     
     mutating func parseCSVFile(rawData: String) {
@@ -65,18 +65,20 @@ struct MainModel {
             let data:[String] = studentData.components(separatedBy: "\t")//Look up what \t is and if it's okay to use instead of ,
             
             if data[0] != "Parade Position" {
-                student.rank = Int(Double(data[0])!.truncatingRemainder(dividingBy: 10.0))
-                student.location = Int(Double(data[0])!.truncatingRemainder(dividingBy: 1.0) * 10)//
+                var rankAndLocation:[String] = data[0].components(separatedBy: ".")
+                student.rank = Int(rankAndLocation[0])
+                student.location = Int(rankAndLocation[1])
                 student.lastName = data[1]
                 student.firstName = data[2]
                 student.instrument = data[3]
-                student.period = Int(Double(data[4])!.truncatingRemainder(dividingBy: 10.0))
-                student.grade = Int(Double(data[4])!.truncatingRemainder(dividingBy: 1.0) * 10)//Can't get the decimal value.
-                
+                var periodAndGrade:[String]? = data[4].components(separatedBy: ".")//Check what the empty ones signify
+                student.period = Int(periodAndGrade![0])
+                student.grade = Int((periodAndGrade?.count == 1) ? "0": periodAndGrade![1])
                 studentsData.append(student)
+                
             }
         }
-        print(studentsData[0].location!)
+        //print(studentsData[0].grade)
     }
     
     struct Student {
