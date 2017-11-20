@@ -33,11 +33,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cW3-2P-aT1">
-                                <rect key="frame" x="694" y="28" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Export"/>
-                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="782-He-NQq">
                                 <rect key="frame" x="0.0" y="72" width="768" height="837"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -76,13 +71,56 @@
                                     <segment title="Absent"/>
                                 </segments>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cW3-2P-aT1">
+                                <rect key="frame" x="669" y="28" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Import CSV"/>
+                                <connections>
+                                    <action selector="importCSV:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1ds-Mr-gqI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="9Da-2v-Kkv" kind="presentation" identifier="importNewDataSegue" id="XJX-X3-7kU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-557.03125" y="112.49999999999999"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="eyF-7M-u5z">
+            <objects>
+                <viewController id="9Da-2v-Kkv" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IBH-Q1-ONV"/>
+                        <viewControllerLayoutGuide type="bottom" id="PCh-6V-Wc6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XXb-Kl-rAi">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLL-Yd-eww">
+                                <rect key="frame" x="669" y="28" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Import CSV"/>
+                                <connections>
+                                    <segue destination="RBl-w9-FW2" kind="unwind" unwindAction="unwindToMainVCWithSegue:" id="PTV-yd-0yv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <segue destination="RBl-w9-FW2" kind="unwind" identifier="unwindToMainVC" unwindAction="unwindToMainVCWithSegue:" id="CRg-5s-94d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yMI-Ut-IXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="RBl-w9-FW2" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="119" y="112"/>
         </scene>
     </scenes>
 </document>

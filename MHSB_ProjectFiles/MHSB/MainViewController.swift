@@ -8,8 +8,12 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
 
+
+class MainViewController: UIViewController {
+    
+    var testVar = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,7 +30,7 @@ class MainViewController: UIViewController {
         if dataModel.isLoaded {
             //Use functions from MainModel to get the loaded data and present them
             //on the device.
-            
+
             
         //No data is present in the system.
         } else {
@@ -37,6 +41,19 @@ class MainViewController: UIViewController {
             
         }
      
+        
+    }
+    @IBAction func importCSV(_ sender: Any) {
+        performSegue(withIdentifier: "importNewDataSegue", sender: nil)
+    }
+    
+    @IBAction func unwindToMainVC(segue:UIStoryboardSegue) {
+        //Do something here whenever the previous view is dismissed.
+        
+    }
+    
+    //This only getscalled whenever data is imported from email.`
+    func functionForTheEmailDummy() {
         
     }
     
