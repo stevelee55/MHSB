@@ -13,16 +13,16 @@ import UIKit
 class MainViewController: UIViewController {
     
     var testVar = 0
+    var dataModel = MainModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-            updateTextGUI()
+            setupTextUI()
     }
     
-    func updateTextGUI() {
+    func setupTextUI() {
         //Load data.
-        var dataModel = MainModel()
         dataModel.loadData()
         
         //Loading saved data. Check if any data is saved. If yes, load it as GUI.
@@ -34,15 +34,28 @@ class MainViewController: UIViewController {
             
         //No data is present in the system.
         } else {
-            //Show in the GUI that no data is present and show the button
-            //to add data/teach the user how to add data.
-            
-            print("No Data")
-            
+            displayNoDataSign()
+            setImportDate()
+            disableControls()
         }
-     
+    }
+    
+    func displayNoDataSign() {
         
     }
+    
+    func disableControls() {
+        
+    }
+    
+    func setImportDate() {
+        if dataModel.isLoaded {
+            //Set date as the saved import date from nsuserdata
+        } else {
+            //Set date as "No Imported Data"
+        }
+    }
+    
     @IBAction func importCSV(_ sender: Any) {
         performSegue(withIdentifier: "importNewDataSegue", sender: nil)
     }
