@@ -41,11 +41,12 @@ class MainViewController: UIViewController {
             //Use functions from MainModel to get the loaded data and present them
             //on the device.
 
+            setImportDate()
+            attendanceContentLabel.text = (dataModel.studentsData[231].firstName)
             
         //No data is present in the system.
         } else {
             displayNoDataSign()
-            setImportDate()
             disableControls()
         }
     }
@@ -65,22 +66,15 @@ class MainViewController: UIViewController {
     }
     
     func setImportDate() {
-        if dataModel.isLoaded {
-            //Set date as the saved import date from nsuserdata
-            let defaults = UserDefaults.standard
-            if let storedImportedDate = defaults.object(forKey: "Imported_Date") as? String {
-                dateLabel.text = storedImportedDate
-            } else {
-                dateLabel.text = "Corrupted Date Data"
-            }
-        } else {
-            //Set date as "No Imported Data"
-            dateLabel.text = "No Imported Data"
-        }
+        dateLabel.text = dataModel.storedDateInString(forKey: "Imported_Date")
+        print(dataModel.storedDateInString(forKey: "Imported_Date"))
     }
     
     @IBAction func importCSV(_ sender: Any) {
         performSegue(withIdentifier: "importNewDataSegue", sender: nil)
+        
+        //TEST Importing Data
+        dataModel.addNewData()
     }
     
     @IBAction func unwindToMainVC(segue:UIStoryboardSegue) {
