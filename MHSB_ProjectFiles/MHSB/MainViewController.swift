@@ -8,12 +8,22 @@
 
 import UIKit
 
-
-
 class MainViewController: UIViewController {
     
-    var testVar = 0
+    //Objects
     var dataModel = MainModel()
+    
+    //Outlets
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var attendanceContentLabel: UILabel!
+    @IBOutlet weak var guiButton: UIButton!
+    @IBOutlet weak var studentsYearSelector: UISegmentedControl!
+    @IBOutlet weak var studentsGradeSelector: UISegmentedControl!
+    @IBOutlet weak var studentsStatusSelector: UISegmentedControl!
+    
+    
+    //Views
+    @IBOutlet weak var attendanceTextGUI: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,18 +51,31 @@ class MainViewController: UIViewController {
     }
     
     func displayNoDataSign() {
-        
+        attendanceTextGUI.contentSize.height = attendanceContentLabel.frame.size.height
+        attendanceTextGUI.isScrollEnabled = false
+        attendanceContentLabel.text = "No Attendance Sheet Uploaded"
     }
     
     func disableControls() {
+        guiButton.isEnabled = false
+        studentsYearSelector.isEnabled = false
+        studentsGradeSelector.isEnabled = false
+        studentsStatusSelector.isEnabled = false
         
     }
     
     func setImportDate() {
         if dataModel.isLoaded {
             //Set date as the saved import date from nsuserdata
+            let defaults = UserDefaults.standard
+            if let storedImportedDate = defaults.object(forKey: "Imported_Date") as? String {
+                dateLabel.text = storedImportedDate
+            } else {
+                dateLabel.text = "Corrupted Date Data"
+            }
         } else {
             //Set date as "No Imported Data"
+            dateLabel.text = "No Imported Data"
         }
     }
     

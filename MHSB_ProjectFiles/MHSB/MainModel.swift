@@ -33,8 +33,7 @@ struct MainModel {
         //Loading data and seeing if a dataset has already been added. If not,
         //return false.
         let defaults = UserDefaults.standard
-        let storedData = defaults.object(forKey: "MHS_Data") as? [Student]
-        if storedData != nil {
+        if let storedData = defaults.object(forKey: "MHS_Data") as? [Student] {
             isLoaded = true
             updateSystemData()
         } else {
@@ -97,6 +96,7 @@ struct MainModel {
                 student.lastName = data[1]
                 student.firstName = data[2]
                 student.instrument = data[3]
+            
                 //Separating whole number and tenth digit by separating them in string. Not the best method.
                 var periodAndGrade:[String]? = data[4].components(separatedBy: ".")//Check what the empty ones signify
                 student.period = Int(periodAndGrade![0])

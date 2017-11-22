@@ -27,16 +27,12 @@
                                 <state key="normal" title="GUI"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Saved Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BS0-av-YyQ">
-                                <rect key="frame" x="20" y="33" width="88" height="21"/>
+                                <rect key="frame" x="20" y="33" width="187" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="782-He-NQq">
-                                <rect key="frame" x="0.0" y="72" width="768" height="837"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </scrollView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="p2e-20-3EQ">
                                 <rect key="frame" x="76" y="952" width="618" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -76,13 +72,33 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Import CSV"/>
                                 <connections>
-                                    <action selector="importCSV:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1ds-Mr-gqI"/>
+                                    <action selector="importCSV:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EuC-mJ-Gwk"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="782-He-NQq">
+                                <rect key="frame" x="1" y="71" width="768" height="837"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUu-Gk-ivL">
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="837"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="attendanceContentLabel" destination="zUu-Gk-ivL" id="s1H-u9-4gW"/>
+                        <outlet property="attendanceTextGUI" destination="782-He-NQq" id="GTe-zf-2Z1"/>
+                        <outlet property="dateLabel" destination="BS0-av-YyQ" id="G09-K6-BJY"/>
+                        <outlet property="guiButton" destination="ysk-0I-H47" id="Bgc-nM-MQp"/>
+                        <outlet property="studentsGradeSelector" destination="p2e-20-3EQ" id="yaG-b4-Ybe"/>
+                        <outlet property="studentsStatusSelector" destination="GZG-Rr-sKb" id="X8Y-dv-eNq"/>
+                        <outlet property="studentsYearSelector" destination="QzI-wy-tn8" id="S5A-ht-YYB"/>
                         <segue destination="9Da-2v-Kkv" kind="presentation" identifier="importNewDataSegue" id="XJX-X3-7kU"/>
                     </connections>
                 </viewController>

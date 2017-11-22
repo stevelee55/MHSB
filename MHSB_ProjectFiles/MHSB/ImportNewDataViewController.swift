@@ -16,7 +16,7 @@ class ImportNewDataViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("ASDF")
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
