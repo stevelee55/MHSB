@@ -18,6 +18,7 @@ class Student: NSObject, NSCoding {
         aCoder.encode(period, forKey: "period")
         aCoder.encode(rank, forKey: "rank")
         aCoder.encode(location, forKey: "location")
+        aCoder.encode(status, forKey: "status")
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -28,10 +29,11 @@ class Student: NSObject, NSCoding {
         let _period = aDecoder.decodeObject(forKey: "period") as? Int
         let _rank = aDecoder.decodeObject(forKey: "rank") as? Int
         let _location = aDecoder.decodeObject(forKey: "location") as? Int
-        self.init(_firstName: _firstName!, _lastName: _lastName!, _grade: _grade!, _instrument: _instrument!, _period: _period!, _rank: _rank!, _location: _location!)
+        let _status = aDecoder.decodeObject(forKey: "status") as? String
+        self.init(_firstName: _firstName!, _lastName: _lastName!, _grade: _grade!, _instrument: _instrument!, _period: _period!, _rank: _rank!, _location: _location!, _status: _status!)
     }
     
-    init(_firstName: String, _lastName: String, _grade: Int, _instrument: String, _period: Int, _rank: Int, _location: Int) {
+    init(_firstName: String, _lastName: String, _grade: Int, _instrument: String, _period: Int, _rank: Int, _location: Int, _status: String) {
         self.firstName = _firstName
         self.lastName = _lastName
         self.grade = _grade
@@ -39,6 +41,7 @@ class Student: NSObject, NSCoding {
         self.period = _period
         self.rank = _rank
         self.location = _location
+        self.status = _status
     }
     
     override init() {}
@@ -47,9 +50,11 @@ class Student: NSObject, NSCoding {
     var lastName: String? = ""
     var grade: Int? = 0
     var instrument: String? = ""
+    //Ask him about he period how some of them have borken ones.
     var period: Int? = 0
     var rank: Int? = 0
     var location: Int? = 0
+    var status: String? = ""
 }
 
 struct MainModel {
@@ -117,7 +122,7 @@ struct MainModel {
         var dateInString: String
         let defaults = UserDefaults.standard
         if let storedImportedDate = defaults.object(forKey: key) as? String {
-            dateInString = "Imported: " + storedImportedDate
+            dateInString = "Imported on: " + storedImportedDate
         } else {
             dateInString = "Date for key \"" + key + "\" does not exist"
         }
@@ -183,6 +188,8 @@ struct MainModel {
                 var periodAndGrade:[String]? = data[4].components(separatedBy: ".")//Check what the empty ones signify
                 student.period = Int(periodAndGrade![0])
                 student.grade = Int((periodAndGrade?.count == 1) ? "0": periodAndGrade![1])
+                student.status = "Present"
+                
                 parsedData.append(student)
                 
             }
