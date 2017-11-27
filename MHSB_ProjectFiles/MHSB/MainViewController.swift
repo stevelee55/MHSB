@@ -84,8 +84,12 @@ class MainViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let toVC = segue.destination as! GUIViewController
-        toVC.dataModel.studentsData = dataModel.studentsData
+        if segue.identifier == "presentGUISegue" {
+            let toVC = segue.destination as! GUIViewController
+            toVC.dataModel.studentsData = dataModel.studentsData
+        } else if segue.identifier == "importNewDataSegue" {
+            
+        }
     }
     
     @IBAction func unwindToMainVC(segue:UIStoryboardSegue) {
@@ -98,7 +102,7 @@ class MainViewController: UIViewController {
     
 //Helper Functions
     
-    func setupTextUI() {
+    private func setupTextUI() {
         //Load data.
         dataModel.loadData()
         
@@ -108,6 +112,7 @@ class MainViewController: UIViewController {
             //Use functions from MainModel to get the loaded data and present them
             //on the device.
             setImportDate()
+            //setDataInText(grade: "All", period: "All", status: "All")
             setDataInText(grade: "All", period: "All", status: "All")
             
             //No data is present in the system.
@@ -117,7 +122,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    func setDataInText(grade: String, period: String, status: String) {
+    private func setDataInText(grade: String, period: String, status: String) {
         
         let arrangedDataInText = arrangeDataInTextFormat(grade: grade == "All" ? -1 : Int(grade)!, period: period == "All" ? 0 : Int(period)!, status: status)
         
@@ -129,10 +134,12 @@ class MainViewController: UIViewController {
         attendanceTextGUI.contentSize = attendanceContentLabel.frame.size
     }
     
-    func arrangeDataInTextFormat(grade: Int, period: Int, status: String) -> (String, Int) {
+    private func arrangeDataInTextFormat(grade: Int, period: Int, status: String) -> (String, Int) {
         var dataInText:String = ""
         var lineCount: Int = 0
-        var filteredList: [Student] = dataModel.studentsData
+        /*
+         var filteredList: [Student] = dataModel.studentsData
+        
         
         //Make this better. This is way too inefficient. Using Index -1 could be the key.
         if grade != -1 {
@@ -165,12 +172,16 @@ class MainViewController: UIViewController {
                 }
             }
         }
-        for studentData in filteredList {
-            //Ask What he wants.
-            let oneStudentsData = "\(studentData.firstName!) \(studentData.lastName!), Year: \(studentData.grade!), Period: \(studentData.period!), Instrument: \(studentData.instrument!), Rank: \(studentData.rank!),  Location: \(studentData.location!) \n\n "
-            dataInText.append(oneStudentsData)
-            lineCount += 3 //This is to account for the line spacing.
+     */
         
+        for studentData in dataModel.studentsData {
+            
+            if ((grade == -1 ? true : (studentData.grade == grade ? true : false)) && (period == 0 ? true : (studentData.period == period ? true : false)) && (status == "All" ? true : (studentData.status == status ? true : false))) {
+                //Ask What he wants.
+                let oneStudentsData = "\(studentData.firstName!) \(studentData.lastName!), Year: \(studentData.grade!), Period: \(studentData.period!), Instrument: \(studentData.instrument!), Rank: \(studentData.rank!),  Location: \(studentData.location!) \n\n "
+                dataInText.append(oneStudentsData)
+                lineCount += 3 //This is to account for the line spacing.
+            }
         }
         let numberOfStudentsCount = "Count: \(lineCount / 3) \n\n"
         dataInText.append(numberOfStudentsCount)
@@ -178,13 +189,13 @@ class MainViewController: UIViewController {
         return (dataInText, lineCount)
     }
     
-    func displayNoDataSign() {
+    private func displayNoDataSign() {
         attendanceTextGUI.contentSize.height = attendanceContentLabel.frame.size.height
         attendanceTextGUI.isScrollEnabled = false
         attendanceContentLabel.text = "No Attendance Sheet Uploaded"
     }
     
-    func disableControls() {
+    private func disableControls() {
         guiButton.isEnabled = false
         studentsYearSelector.isEnabled = false
         studentsPeriodSelector.isEnabled = false
@@ -192,12 +203,12 @@ class MainViewController: UIViewController {
         
     }
     
-    func setImportDate() {
+    private func setImportDate() {
         dateLabel.text = dataModel.storedDateInString(forKey: "Imported_Date")
     }
     
     //This only getscalled whenever data is imported from email.`
-    func functionForTheEmailDummy() {
+    private func functionForTheEmailDummy() {
         
     }
     

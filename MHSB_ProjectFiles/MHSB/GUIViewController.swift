@@ -15,7 +15,16 @@ class GUIViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpGUI()
     }
+    
+//Helper Functions
+    
+    private func setUpGUI() {
+        
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
