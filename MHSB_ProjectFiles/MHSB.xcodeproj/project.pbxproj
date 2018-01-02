@@ -18,6 +18,7 @@
 		9D3C4EDE1F59117B00BA0C15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D3C4EDC1F59117B00BA0C15 /* LaunchScreen.storyboard */; };
 		9D3C4EEA1F59171C00BA0C15 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C4EE91F59171C00BA0C15 /* MainModel.swift */; };
 		9D5FB6031FC0D07000F27968 /* ImportNewDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FB6021FC0D07000F27968 /* ImportNewDataViewController.swift */; };
+		9DE7D3BC1FF560F500F57073 /* UICollectionViewCellBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE7D3BB1FF560F500F57073 /* UICollectionViewCellBubble.swift */; };
 		9DFE3FFA1F9A50A200B18D78 /* MHS_0.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9DFE3FF91F9A488400B18D78 /* MHS_0.csv */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		9D3C4EDF1F59117B00BA0C15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D3C4EE91F59171C00BA0C15 /* MainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		9D5FB6021FC0D07000F27968 /* ImportNewDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportNewDataViewController.swift; sourceTree = "<group>"; };
+		9DE7D3BB1FF560F500F57073 /* UICollectionViewCellBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellBubble.swift; sourceTree = "<group>"; };
 		9DFE3FF91F9A488400B18D78 /* MHS_0.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = MHS_0.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 			children = (
 				9D3C4ED01F59117B00BA0C15 /* AppDelegate.swift */,
 				9D2F34D51FC6762B0080909F /* TopToBottomSegue.swift */,
+				9DE7D3BB1FF560F500F57073 /* UICollectionViewCellBubble.swift */,
 				9D5FB6021FC0D07000F27968 /* ImportNewDataViewController.swift */,
 				9D2F34D11FC6647E0080909F /* GUIViewController.swift */,
 				9D3C4ED21F59117B00BA0C15 /* MainViewController.swift */,
@@ -161,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D2F34D21FC6647E0080909F /* GUIViewController.swift in Sources */,
+				9DE7D3BC1FF560F500F57073 /* UICollectionViewCellBubble.swift in Sources */,
 				9D3C4ED31F59117B00BA0C15 /* MainViewController.swift in Sources */,
 				9D2F34D41FC669F40080909F /* TransitionManager.swift in Sources */,
 				9D3C4EEA1F59171C00BA0C15 /* MainModel.swift in Sources */,

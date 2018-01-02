@@ -74,6 +74,7 @@ class MainViewController: UIViewController {
 
     @IBAction func presentGUI(_ sender: Any) {
         performSegue(withIdentifier: "presentGUISegue", sender: nil)
+        
     }
     
     @IBAction func importCSV(_ sender: Any) {

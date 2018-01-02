@@ -64,6 +64,25 @@ struct MainModel {
     
 //Public Functions
     
+    //Later
+//    public func checkForDuplicate() {
+//        for i in 0...studentsData.count - 1 {
+//            //Checking for
+//        }
+//    }
+    
+    //Improve
+    public func countingEmptySpots() -> Int {
+        //Try to get the exact number of empty spots. Get rid of the padding.
+        var emptySpotCount = 2
+        for i in 0...studentsData.count - 2 {
+            if (studentsData[i].location! + 1 != studentsData[i + 1].location!) {
+                emptySpotCount += 1
+            }
+        }
+        return emptySpotCount
+    }
+    
     //The only way to add data is to add from the email. When the button is pressed, it will either show the instruction or redirect to the email app.
     //So, I just have to update the system data (updateSystemData) whenever the app is launched
     
