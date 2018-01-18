@@ -47,6 +47,7 @@ class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectio
         return dataModel.studentsData.count + dataModel.countingEmptySpots()
     }
 
+    //Dynamic UI Generator
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bubbleCell", for: indexPath) as! UICollectionViewCellBubble
         //For every position, row is calculated.
@@ -56,22 +57,26 @@ class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectio
         for i in 0 ... dataModel.studentsData.count - 1 {
             if (dataModel.studentsData[i].rank == row) {
                 if (dataModel.studentsData[i].location == ((indexPath.row + 1) % 9)) {
-                    cell.testName.text = String(row)
+                    cell.firstName.text = dataModel.studentsData[i].firstName
+                    cell.lastName.text = dataModel.studentsData[i].lastName
                     cell.backgroundColor = UIColor.gray
+                    print(i)
                     return cell
                 } else if (((indexPath.row + 1) % 9) == 0) {
                     if (dataModel.studentsData[i].location == 9) {
-                        cell.testName.text = String(row)
-                         cell.backgroundColor = UIColor.gray
+                        cell.firstName.text = dataModel.studentsData[i].firstName
+                        cell.lastName.text = dataModel.studentsData[i].lastName
+                        cell.backgroundColor = UIColor.gray
+                        //print(i)
                         return cell
                     }
                 }
             }
-            print(i)
         }
-        
-        cell.testName.text = ""
-        cell.backgroundColor = UIColor.clear
+        //print("Above cannot be row number")
+        cell.firstName.text = ""
+        cell.lastName.text = ""
+        cell.backgroundColor = UIColor.red
         return cell //return default cell
     }
     

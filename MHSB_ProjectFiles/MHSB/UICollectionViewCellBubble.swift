@@ -11,9 +11,6 @@ import Foundation
 
 class UICollectionViewCellBubble: UICollectionViewCell {
     
-    @IBOutlet weak var testName: UILabel!
-    
-    @IBOutlet weak var testButton: UIButton!
-    
-    
+    @IBOutlet weak var firstName: UILabel!
+    @IBOutlet weak var lastName: UILabel!
 }
