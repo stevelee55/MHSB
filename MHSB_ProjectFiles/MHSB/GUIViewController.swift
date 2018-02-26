@@ -113,23 +113,6 @@ class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectio
         bbv.isUserInteractionEnabled = true
         let cell = collectionView.cellForItem(at: indexPath) as! UICollectionViewCellBubble
         bbv.firstName.text = cell.firstName.text
-//        let newWidthAndHeight = self.view.frame.size.height / 4
-//        let newFrameOfTheBubbleRespectToTheViewFrame:CGRect = CGRect(origin: self.view.center, size: CGSize(width: newWidthAndHeight, height: newWidthAndHeight))
-//        let infoBubble:UIView = UIView(frame: newFrameOfTheBubbleRespectToTheViewFrame)
-//        infoBubble.center = self.view.center
-//        //Should create a class of uiview that is bubble that displays name and
-//        //things on the bubble automatically when the indexPath is passed.
-//        infoBubble.backgroundColor = UIColor.blue
-//        self.view.addSubview(infoBubble)
-//        self.view.bringSubview(toFront: infoBubble)
-//        let label:UILabel = UILabel(frame: CGRect(origin: CGPoint.init(x: 0, y: 0), size: infoBubble.frame.size))
-//        let cell = collectionView.cellForItem(at: indexPath) as! UICollectionViewCellBubble
-//        label.text = cell.firstName.text
-//        label.backgroundColor = UIColor.white
-//        label.font = UIFont(name: "Calbri", size: 400)
-//        print(cell.firstName)
-//        infoBubble.addSubview(label)
-//        infoBubble.bringSubview(toFront: label)
     }
     @objc func someAction(_ sender:UITapGestureRecognizer){
 
@@ -137,5 +120,10 @@ class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectio
         bbv.isHidden = true
         gridBubbleCollectionView.isUserInteractionEnabled = true
         gridBubbleCollectionView.isHidden = false
+        
+        //Whenever the bubble gets dismissed or appear, make sure to save the data
+        //to the database. Saving can be done by using the passed indexPath to find the
+        //index at which the element is at.
+        //This updated database will later be passed on.
     }
 }
