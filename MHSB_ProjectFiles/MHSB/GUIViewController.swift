@@ -76,8 +76,18 @@ class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectio
         //print("Above cannot be row number")
         cell.firstName.text = ""
         cell.lastName.text = ""
-        cell.backgroundColor = UIColor.red
+        //See why this has to be set as clear to make sure every spot is clear.
+        //Isn't default supposed to be clear?
+        cell.backgroundColor = UIColor.clear
         return cell //return default cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! UICollectionViewCellBubble
+        if (cell.backgroundColor == UIColor.gray) {
+            cell.backgroundColor = UIColor.red
+        } else if (cell.backgroundColor == UIColor.red) {
+            cell.backgroundColor = UIColor.gray
+        }
+    }
 }
