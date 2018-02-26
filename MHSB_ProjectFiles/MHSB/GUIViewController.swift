@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     
@@ -15,11 +16,15 @@ class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectio
     //When this vc is loaded, "dataModel" is set with the data.
     var dataModel = MainModel()
     
+    @IBOutlet weak var bbv: BigBubbleView!
     @IBOutlet weak var gridBubbleCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpGUI()
+        
+        let gestureSwift2AndHigher = UITapGestureRecognizer(target: self, action: #selector(self.someAction(_:)))
+        bbv.addGestureRecognizer(gestureSwift2AndHigher)
     }
     
 //Helper Functions
@@ -27,7 +32,11 @@ class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectio
     private func setUpGUI() {
         //UICollectionView setup stuff for delgation and protocols.
         
-        //See when I should design the elements. 
+        //See when I should design the elements.
+        
+        //The bbv shouldn't be visible.
+        bbv.isUserInteractionEnabled = false
+        bbv.isHidden = true
         
     }
     
@@ -82,12 +91,51 @@ class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectio
         return cell //return default cell
     }
     
+    //Doing something for each of the elements whenever it's pressed.
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //Selected cell with the path.
         let cell = collectionView.cellForItem(at: indexPath) as! UICollectionViewCellBubble
+        
         if (cell.backgroundColor == UIColor.gray) {
+            showBigBubbleInfo(collectionView, indexPath: indexPath)
             cell.backgroundColor = UIColor.red
         } else if (cell.backgroundColor == UIColor.red) {
             cell.backgroundColor = UIColor.gray
         }
+        
+    }
+    
+    //Displaying bubble view with the passed in cell info by path.
+    func showBigBubbleInfo(_ collectionView: UICollectionView, indexPath: IndexPath) {
+        gridBubbleCollectionView.isUserInteractionEnabled = false
+        gridBubbleCollectionView.isHidden = true
+        bbv.isHidden = false
+        bbv.isUserInteractionEnabled = true
+        let cell = collectionView.cellForItem(at: indexPath) as! UICollectionViewCellBubble
+        bbv.firstName.text = cell.firstName.text
+//        let newWidthAndHeight = self.view.frame.size.height / 4
+//        let newFrameOfTheBubbleRespectToTheViewFrame:CGRect = CGRect(origin: self.view.center, size: CGSize(width: newWidthAndHeight, height: newWidthAndHeight))
+//        let infoBubble:UIView = UIView(frame: newFrameOfTheBubbleRespectToTheViewFrame)
+//        infoBubble.center = self.view.center
+//        //Should create a class of uiview that is bubble that displays name and
+//        //things on the bubble automatically when the indexPath is passed.
+//        infoBubble.backgroundColor = UIColor.blue
+//        self.view.addSubview(infoBubble)
+//        self.view.bringSubview(toFront: infoBubble)
+//        let label:UILabel = UILabel(frame: CGRect(origin: CGPoint.init(x: 0, y: 0), size: infoBubble.frame.size))
+//        let cell = collectionView.cellForItem(at: indexPath) as! UICollectionViewCellBubble
+//        label.text = cell.firstName.text
+//        label.backgroundColor = UIColor.white
+//        label.font = UIFont(name: "Calbri", size: 400)
+//        print(cell.firstName)
+//        infoBubble.addSubview(label)
+//        infoBubble.bringSubview(toFront: label)
+    }
+    @objc func someAction(_ sender:UITapGestureRecognizer){
+
+        bbv.isUserInteractionEnabled = false
+        bbv.isHidden = true
+        gridBubbleCollectionView.isUserInteractionEnabled = true
+        gridBubbleCollectionView.isHidden = false
     }
 }
