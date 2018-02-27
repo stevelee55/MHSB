@@ -111,14 +111,15 @@ struct MainModel {
     //This should run whenever the data is loaded from email. This should be called first and save the data into the "MHS_Data" then the loadData should be called.
     //Adding new spreadsheet data from email.
     //Change the parameter later when implementing email import feature.
-    public mutating func addNewData() {
+    public mutating func addNewData(url: URL) {
         //This is where the imported file from the email is passed in.
         
         //Dummy values.
         //TEMPPPPPPPPPPPPPP
         //This is where the file is imported from email. Get the raw data from it and pass it to the function.
-        let path = Bundle.main.path(forResource: "MHS_0", ofType: "csv")
-        let rawCSVData = try! String.init(contentsOf: URL.init(fileURLWithPath: path!))
+        //let path = Bundle.main.path(forResource: "MHS_0", ofType: "csv")
+        //let rawCSVData = try! String.init(contentsOf: URL.init(fileURLWithPath: path!))
+        let rawCSVData = try! String.init(contentsOf: url as URL)
 
         //Decide to use the "updateSystemData" or naw.
         studentsData = parseCSVFile(rawData: rawCSVData)

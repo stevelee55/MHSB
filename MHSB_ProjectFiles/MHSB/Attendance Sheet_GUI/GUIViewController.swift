@@ -52,6 +52,14 @@ class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectio
         //Setting up the blurview
         blurView.effect = UIBlurEffect(style: .regular)
     }
+    //Not the best method I think
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        setUpGUI()
+        gridBubbleCollectionView.reloadData()
+        //Setting up the blurview
+        blurView.effect = UIBlurEffect(style: .regular)
+    }
     
 //Helper Functions
     

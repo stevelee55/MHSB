@@ -30,7 +30,15 @@ class MainViewController: UIViewController {
 //Setup
     override func viewDidLoad() {
         super.viewDidLoad()
-            setupTextUI()
+        setupTextUI()
+        print("First")
+    }
+    //Find a better solution for this. this way requires the user to
+    //quit the app.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        setupTextUI()
+        //print("TEEE")
     }
     
 //Segments
@@ -80,9 +88,10 @@ class MainViewController: UIViewController {
     
     @IBAction func importCSV(_ sender: Any) {
         performSegue(withIdentifier: "importNewDataSegue", sender: nil)
-        
-        //TEST Importing Data
-        dataModel.addNewData()
+        //Have instructions on how to import data/format csv file and
+        //when importing, make sure to quit the app first. If my accident
+        //you didn't quit the app before importing from email, just quit the app
+        //and open it again.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -225,6 +234,13 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    //Getting the import from email.
+    func handleOpeningURL(_ url:URL){//Check if the code goes from top to the bottom in xcode because when I put "takecareofzippeddata" before this current function, it crahses because the "takecareofzippeddata" runs ahead. Check swift's "code flow" concept
+        dataModel.addNewData(url: url)
+        //Resetting the date by clearing it out.
+        dataModel.saveCurrentDate(forKey: "Reset")
+        //lastEditedDateLabel.text = dataModel.storedDateInString(forKey: "Edited_Date")
+        //print("Second")
+    }
 }
 
