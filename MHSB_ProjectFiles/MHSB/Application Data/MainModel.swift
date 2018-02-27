@@ -209,14 +209,30 @@ struct MainModel {
         
         var parsedData: [Student] = [Student]()
         
-        let separatedByStudents:[String] = rawData.components(separatedBy: "\r");
+        var separatedByStudents:[String] = rawData.components(separatedBy: "\r\n");
+        if (separatedByStudents.count == 1) {
+            separatedByStudents = rawData.components(separatedBy: "\r");
+        }
+        if (separatedByStudents.count == 1) {
+            separatedByStudents = rawData.components(separatedBy: "\n");
+        }
         
-        for studentData in separatedByStudents {
-            
+        for var studentData in separatedByStudents {
             let student: Student = Student()
-            let data:[String] = studentData.components(separatedBy: "\t")//Look up what \t is and if it's okay to use instead of ,
+            studentData = studentData.replacingOccurrences(of: "\n", with: "")
+            studentData = studentData.replacingOccurrences(of: "\r", with: "")
+            studentData = studentData.replacingOccurrences(of: "\"", with: "")
+
+            //This is taking in count of \t and ,
+            var data:[String] = studentData.components(separatedBy: "\t")//Look up what \t is and if it's okay to use instead of ,
+            if (data.count == 1) {
+                data = studentData.components(separatedBy: ",")
+            }
             
-            if data[0] != "Parade Position" {
+            if (data[0] == "Parade Position") {
+                
+                
+            } else {
                 //Separating whole number and tenth digit by separating them in string. Not the best method.
                 var rankAndLocation:[String] = data[0].components(separatedBy: ".")
                 student.rank = Int(rankAndLocation[0])
@@ -224,7 +240,7 @@ struct MainModel {
                 student.lastName = data[1]
                 student.firstName = data[2]
                 student.instrument = data[3]
-            
+                
                 //Separating whole number and tenth digit by separating them in string. Not the best method.
                 var periodAndGrade:[String]? = data[4].components(separatedBy: ".")//Check what the empty ones signify
                 student.period = Int(periodAndGrade![0])
@@ -232,7 +248,6 @@ struct MainModel {
                 student.status = "Present"
                 
                 parsedData.append(student)
-                
             }
         }
         //print(parsedData[0].firstName)
