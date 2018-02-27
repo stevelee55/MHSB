@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var studentsYearSelector: UISegmentedControl!
     @IBOutlet weak var studentsPeriodSelector: UISegmentedControl!
     @IBOutlet weak var studentsStatusSelector: UISegmentedControl!
+    @IBOutlet weak var lastEditedDateLabel: UILabel!
     
     
 //Views
@@ -97,10 +98,7 @@ class MainViewController: UIViewController {
         if segue.identifier == "unwindImportNewDataSegue" {
             
         } else if segue.identifier == "unwindPresentGUISegue" {
-            //See if this is bothering for cotter.
-            //If yes, figure out a way to update the scrollview contents.
-            //setdataintext
-            //dataModel.archieveCurrentData()
+            lastEditedDateLabel.text = dataModel.storedDateInString(forKey: "Edited_Date")
         }
     }
     
@@ -116,6 +114,9 @@ class MainViewController: UIViewController {
             //Use functions from MainModel to get the loaded data and present them
             //on the device.
             setImportDate()
+            //Setting the edited date.
+            lastEditedDateLabel.text = dataModel.storedDateInString(forKey: "Edited_Date")
+            
             //setDataInText(grade: "All", period: "All", status: "All")
             setDataInText(grade: "All", period: "All", status: "All")
             

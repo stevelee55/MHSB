@@ -106,7 +106,6 @@ struct MainModel {
         let archievedStudentsData:NSData = NSKeyedArchiver.archivedData(withRootObject: studentsData) as NSData
         defaults.set(archievedStudentsData, forKey: "MHS_Data")
         defaults.synchronize()
-        print("ads")
     }
     
     //This should run whenever the data is loaded from email. This should be called first and save the data into the "MHS_Data" then the loadData should be called.
@@ -146,17 +145,39 @@ struct MainModel {
     }
     
     public func storedDateInString(forKey key: String) -> String {
-        var dateInString: String
+        //Default.
+        var dateInString: String = "Date for key \"" + key + "\" does not exist"
+        //Trying to retrieve the saved date
         let defaults = UserDefaults.standard
         if let storedImportedDate = defaults.object(forKey: key) as? String {
-            dateInString = "Imported on: " + storedImportedDate
-        } else {
-            dateInString = "Date for key \"" + key + "\" does not exist"
+            if (key == "Imported_Date") {
+                dateInString = "Imported on: " + storedImportedDate
+            } else if (key == "Edited_Date") {
+                dateInString = "Last Edited: " + storedImportedDate
+            }
+        //Setting the default for edited date if there isn't any.
+        } else if (key == "Edited_Date") {
+            dateInString = ""
         }
         return dateInString
     }
     
-    
+    public func saveCurrentDate(forKey key: String) {
+        //Starting up saving agent.
+        let defaults = UserDefaults.standard
+        //Getting the current date and coverting it to "dd/MM/YEAR" format.
+        let currentDate = convertDateToString(inputDate: Date())
+        //If the key passed is "Reset", then get rid of the data by "saving"
+        //NSData().
+        if (key == "Reset") {
+            //Emptying out the data in the "Edited_Date" location.
+            defaults.set(NSData(), forKey: "Edited_Date")
+        } else {
+            defaults.set(currentDate, forKey: key)
+        }
+        //Saving.
+        defaults.synchronize()
+    }
     
 //Private Functions
     
@@ -170,16 +191,6 @@ struct MainModel {
         formatter.dateFormat = "MM/dd/yyyy HH:mm:ss"
         
         return year == 1 ? "n/a" : formatter.string(from: inputDate)
-    }
-    
-    private func saveCurrentDate(forKey key: String) {
-        //Getting the current date and coverting it to "dd/MM/YEAR" format.
-        let currentDate = convertDateToString(inputDate: Date())
-        
-        //Saving
-        let defaults = UserDefaults.standard
-        defaults.set(currentDate, forKey: key)
-        defaults.synchronize()
     }
     
     //This function should be called after the data that's being passed isn't nil.

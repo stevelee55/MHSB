@@ -22,20 +22,35 @@ class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectio
     @IBOutlet weak var studentInfoView: StudentInfoView!
     @IBOutlet weak var gridBubbleCollectionView: UICollectionView!
     
+    //Last Edited Date.
+    @IBOutlet weak var editedDateLabel: UILabel!
     //Present, Tardy, and Absent Buttons.
     @IBAction func presentButton(_ sender: UIButton) {
+        //Updating/saving the current state of data after the button is pressed.
         dismissStudentInfoView(status: (sender.titleLabel?.text)!, index: indexForSelectedCell)
         dataModel.archieveCurrentData()
+        //Saving the edited date and time.
+        dataModel.saveCurrentDate(forKey: "Edited_Date")
+        editedDateLabel.text = dataModel.storedDateInString(forKey: "Edited_Date")
+    }
+    //Resetting students' status and date.
+    @IBAction func resetButton(_ sender: Any) {
+        //Resetting the students' status.
+        for i in 0 ... dataModel.studentsData.count - 1 {
+            dataModel.studentsData[i].status = "Present"
+        }
+        gridBubbleCollectionView.reloadData()
+        dataModel.archieveCurrentData()
+        //Resetting the date by clearing it out.
+        dataModel.saveCurrentDate(forKey: "Reset")
+        editedDateLabel.text = dataModel.storedDateInString(forKey: "Edited_Date")
     }
     //Setting up point.
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUpGUI()
-        
         //Setting up the blurview
         blurView.effect = UIBlurEffect(style: .regular)
-        
     }
     
 //Helper Functions
@@ -45,6 +60,8 @@ class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectio
         studentInfoView.isUserInteractionEnabled = false
         studentInfoView.isHidden = true
         blurView.isHidden = true
+        //Setting up the last edited date.
+        editedDateLabel.text = dataModel.storedDateInString(forKey: "Edited_Date")
     }
     
     //Prepping before going into another view controller.
