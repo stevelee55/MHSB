@@ -97,7 +97,10 @@ class MainViewController: UIViewController {
         if segue.identifier == "unwindImportNewDataSegue" {
             
         } else if segue.identifier == "unwindPresentGUISegue" {
-        
+            //See if this is bothering for cotter.
+            //If yes, figure out a way to update the scrollview contents.
+            //setdataintext
+            //dataModel.archieveCurrentData()
         }
     }
     

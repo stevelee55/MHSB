@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D0AA6D12043D64D00CE6D8A /* BigBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0AA6D02043D64D00CE6D8A /* BigBubbleView.swift */; };
+		9D0AA6D12043D64D00CE6D8A /* StudentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0AA6D02043D64D00CE6D8A /* StudentInfoView.swift */; };
 		9D2F34D21FC6647E0080909F /* GUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F34D11FC6647E0080909F /* GUIViewController.swift */; };
 		9D2F34D41FC669F40080909F /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F34D31FC669F40080909F /* TransitionManager.swift */; };
 		9D2F34D61FC6762B0080909F /* TopToBottomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F34D51FC6762B0080909F /* TopToBottomSegue.swift */; };
@@ -24,7 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9D0AA6D02043D64D00CE6D8A /* BigBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBubbleView.swift; sourceTree = "<group>"; };
+		9D0AA6D02043D64D00CE6D8A /* StudentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoView.swift; sourceTree = "<group>"; };
 		9D2F34D11FC6647E0080909F /* GUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GUIViewController.swift; sourceTree = "<group>"; };
 		9D2F34D31FC669F40080909F /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		9D2F34D51FC6762B0080909F /* TopToBottomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopToBottomSegue.swift; sourceTree = "<group>"; };
@@ -74,12 +74,10 @@
 			children = (
 				9D3C4ED01F59117B00BA0C15 /* AppDelegate.swift */,
 				9D2F34D51FC6762B0080909F /* TopToBottomSegue.swift */,
-				9DE7D3BB1FF560F500F57073 /* UICollectionViewCellBubble.swift */,
-				9D5FB6021FC0D07000F27968 /* ImportNewDataViewController.swift */,
-				9D0AA6D02043D64D00CE6D8A /* BigBubbleView.swift */,
-				9D2F34D11FC6647E0080909F /* GUIViewController.swift */,
 				9D3C4ED21F59117B00BA0C15 /* MainViewController.swift */,
-				9D3C4EE91F59171C00BA0C15 /* MainModel.swift */,
+				9D5FB6021FC0D07000F27968 /* ImportNewDataViewController.swift */,
+				9D7756862044A9E2009A08DC /* Attendance Sheet_GUI */,
+				9D7756872044AA32009A08DC /* Application Data */,
 				9D3C4ED41F59117B00BA0C15 /* Main.storyboard */,
 				9D3C4EDA1F59117B00BA0C15 /* Assets.xcassets */,
 				9D3C4ED71F59117B00BA0C15 /* MHSB.xcdatamodeld */,
@@ -89,6 +87,24 @@
 				9D2F34D31FC669F40080909F /* TransitionManager.swift */,
 			);
 			path = MHSB;
+			sourceTree = "<group>";
+		};
+		9D7756862044A9E2009A08DC /* Attendance Sheet_GUI */ = {
+			isa = PBXGroup;
+			children = (
+				9D2F34D11FC6647E0080909F /* GUIViewController.swift */,
+				9DE7D3BB1FF560F500F57073 /* UICollectionViewCellBubble.swift */,
+				9D0AA6D02043D64D00CE6D8A /* StudentInfoView.swift */,
+			);
+			path = "Attendance Sheet_GUI";
+			sourceTree = "<group>";
+		};
+		9D7756872044AA32009A08DC /* Application Data */ = {
+			isa = PBXGroup;
+			children = (
+				9D3C4EE91F59171C00BA0C15 /* MainModel.swift */,
+			);
+			path = "Application Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,7 +187,7 @@
 				9D3C4ED31F59117B00BA0C15 /* MainViewController.swift in Sources */,
 				9D2F34D41FC669F40080909F /* TransitionManager.swift in Sources */,
 				9D3C4EEA1F59171C00BA0C15 /* MainModel.swift in Sources */,
-				9D0AA6D12043D64D00CE6D8A /* BigBubbleView.swift in Sources */,
+				9D0AA6D12043D64D00CE6D8A /* StudentInfoView.swift in Sources */,
 				9D3C4ED11F59117B00BA0C15 /* AppDelegate.swift in Sources */,
 				9D2F34D61FC6762B0080909F /* TopToBottomSegue.swift in Sources */,
 				9D5FB6031FC0D07000F27968 /* ImportNewDataViewController.swift in Sources */,

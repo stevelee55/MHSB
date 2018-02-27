@@ -101,6 +101,14 @@ struct MainModel {
         }
     }
     
+    public mutating func archieveCurrentData() {
+        let defaults = UserDefaults.standard
+        let archievedStudentsData:NSData = NSKeyedArchiver.archivedData(withRootObject: studentsData) as NSData
+        defaults.set(archievedStudentsData, forKey: "MHS_Data")
+        defaults.synchronize()
+        print("ads")
+    }
+    
     //This should run whenever the data is loaded from email. This should be called first and save the data into the "MHS_Data" then the loadData should be called.
     //Adding new spreadsheet data from email.
     //Change the parameter later when implementing email import feature.
@@ -147,6 +155,8 @@ struct MainModel {
         }
         return dateInString
     }
+    
+    
     
 //Private Functions
     
