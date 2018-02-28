@@ -113,7 +113,10 @@ class MainViewController: UIViewController {
         if segue.identifier == "unwindImportNewDataSegue" {
             
         } else if segue.identifier == "unwindPresentGUISegue" {
-            lastEditedDateLabel.text = dataModel.storedDateInString(forKey: "Edited_Date")
+            setupTextUI()
+            studentsStatusSelector.selectedSegmentIndex = 0
+            studentsPeriodSelector.selectedSegmentIndex = 0
+            studentsYearSelector.selectedSegmentIndex = 0
         }
     }
     

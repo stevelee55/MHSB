@@ -51,6 +51,7 @@ class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectio
         setUpGUI()
         //Setting up the blurview
         blurView.effect = UIBlurEffect(style: .regular)
+
     }
     //Not the best method I think
     override func viewDidAppear(_ animated: Bool) {
@@ -59,6 +60,8 @@ class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectio
         gridBubbleCollectionView.reloadData()
         //Setting up the blurview
         blurView.effect = UIBlurEffect(style: .regular)
+        
+        blurView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(GUIViewController.dismissStudentInfoViewBlur(_:))))
     }
     
 //Helper Functions
@@ -151,12 +154,14 @@ class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectio
         //What's useful here is the indexPath which can be used to update the
         //database. The updateing should be done this way since the the
         //collection view is constantly updated throughout the whole time.
-        
-        //Getting the location of the selected cell for animation.
-        let attributes = collectionView.layoutAttributesForItem(at: indexPath)
-        let cellRect = attributes?.frame
-        let cellFrameInSuperview = collectionView.convert(cellRect!, from: collectionView.superview)
-        displayStudentInfoView(indexPath: indexPath, cellLocationInfo: cellFrameInSuperview)
+        let cell = collectionView.cellForItem(at: indexPath) as! UICollectionViewCellBubble
+        if (cell.backgroundColor != UIColor.clear) {
+            //Getting the location of the selected cell for animation.
+            let attributes = collectionView.layoutAttributesForItem(at: indexPath)
+            let cellRect = attributes?.frame
+            let cellFrameInSuperview = collectionView.convert(cellRect!, from: collectionView.superview)
+            displayStudentInfoView(indexPath: indexPath, cellLocationInfo: cellFrameInSuperview)
+        }
     }
     
     //Displaying bubble view with the passed in cell info by path.
@@ -165,6 +170,7 @@ class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectio
         gridBubbleCollectionView.isUserInteractionEnabled = false
         //Putting up the blurView and the student info view.
         blurView.isHidden = false
+        blurView.isUserInteractionEnabled = true
         studentInfoView.isHidden = false
         studentInfoView.isUserInteractionEnabled = true
         //Update the database and call the update function of the collection view.
@@ -211,7 +217,7 @@ class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectio
         studentInfoView.instrument.text = "Instrument: " + studentData.instrument!
         studentInfoView.grade.text = "Grade: " + String(describing: studentData.grade!)
         studentInfoView.period.text = "Period: " + String(describing: studentData.period!)
-        studentInfoView.location.text = "Location: " + String(describing: studentData.location!)
+        studentInfoView.location.text = "Location: " + String(describing: studentData.rank!) + "." + String(describing: studentData.location!)
         
         //Animating.
         UIView.animate(withDuration: 0.18, animations: {
@@ -238,10 +244,34 @@ class GUIViewController: UIViewController, UICollectionViewDelegate, UICollectio
             self.blurView.alpha = 0
         }, completion: { (finished: Bool) in
             self.blurView.isHidden = true
+            self.blurView.isUserInteractionEnabled = false
             self.studentInfoView.isUserInteractionEnabled = false
             self.studentInfoView.isHidden = true
             self.gridBubbleCollectionView.isUserInteractionEnabled = true
             self.gridBubbleCollectionView.isHidden = false
+            if let viewWithTag = self.view.viewWithTag(100) {
+                viewWithTag.removeFromSuperview()
+            }
+        })
+        //Whenever the bubble gets dismissed or appear, make sure to save the data
+        //to the database. Saving can be done by using the passed indexPath to find the
+        //index at which the element is at.
+        //This updated database will later be passed on.
+    }
+    
+    @objc func dismissStudentInfoViewBlur(_ sender: UITapGestureRecognizer){
+        //Animating.
+        UIView.animate(withDuration: 0.18, animations: {
+            self.studentInfoView.alpha = 0
+            self.blurView.alpha = 0
+        }, completion: { (finished: Bool) in
+            self.blurView.isHidden = true
+            self.blurView.isUserInteractionEnabled = false
+            self.studentInfoView.isUserInteractionEnabled = false
+            self.studentInfoView.isHidden = true
+            self.gridBubbleCollectionView.isUserInteractionEnabled = true
+            self.gridBubbleCollectionView.isHidden = false
+            //What does this mean? ._.
             if let viewWithTag = self.view.viewWithTag(100) {
                 viewWithTag.removeFromSuperview()
             }
