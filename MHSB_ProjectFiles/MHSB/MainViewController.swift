@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
 //Setup
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTextUI()
+        //setupTextUI()
         print("First")
     }
     //Find a better solution for this. this way requires the user to
@@ -38,6 +38,12 @@ class MainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         setupTextUI()
+        guiButton.isUserInteractionEnabled = true
+        attendanceTextGUI.isUserInteractionEnabled = true
+        studentsYearSelector.isUserInteractionEnabled = true
+        studentsPeriodSelector.isUserInteractionEnabled = true
+        studentsStatusSelector.isUserInteractionEnabled = true
+        
         //print("TEEE")
     }
     
