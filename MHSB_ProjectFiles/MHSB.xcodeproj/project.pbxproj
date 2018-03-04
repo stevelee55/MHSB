@@ -73,18 +73,17 @@
 			isa = PBXGroup;
 			children = (
 				9D3C4ED01F59117B00BA0C15 /* AppDelegate.swift */,
-				9D2F34D51FC6762B0080909F /* TopToBottomSegue.swift */,
-				9D3C4ED21F59117B00BA0C15 /* MainViewController.swift */,
-				9D5FB6021FC0D07000F27968 /* ImportNewDataViewController.swift */,
+				9DDAF864204BAC3800E08F36 /* Main View */,
+				9DDAF865204BAC3F00E08F36 /* Import New Data View */,
 				9D7756862044A9E2009A08DC /* Attendance Sheet_GUI */,
-				9D7756872044AA32009A08DC /* Application Data */,
+				9D7756872044AA32009A08DC /* Application Core Data */,
+				9DDAF866204BAC7200E08F36 /* Custom Segues */,
 				9D3C4ED41F59117B00BA0C15 /* Main.storyboard */,
+				9D3C4EDC1F59117B00BA0C15 /* LaunchScreen.storyboard */,
 				9D3C4EDA1F59117B00BA0C15 /* Assets.xcassets */,
 				9D3C4ED71F59117B00BA0C15 /* MHSB.xcdatamodeld */,
-				9D3C4EDC1F59117B00BA0C15 /* LaunchScreen.storyboard */,
 				9D3C4EDF1F59117B00BA0C15 /* Info.plist */,
-				9DFE3FF91F9A488400B18D78 /* MHS_0.csv */,
-				9D2F34D31FC669F40080909F /* TransitionManager.swift */,
+				9DDAF867204BACB900E08F36 /* Misc Files */,
 			);
 			path = MHSB;
 			sourceTree = "<group>";
@@ -99,12 +98,45 @@
 			path = "Attendance Sheet_GUI";
 			sourceTree = "<group>";
 		};
-		9D7756872044AA32009A08DC /* Application Data */ = {
+		9D7756872044AA32009A08DC /* Application Core Data */ = {
 			isa = PBXGroup;
 			children = (
 				9D3C4EE91F59171C00BA0C15 /* MainModel.swift */,
 			);
-			path = "Application Data";
+			path = "Application Core Data";
+			sourceTree = "<group>";
+		};
+		9DDAF864204BAC3800E08F36 /* Main View */ = {
+			isa = PBXGroup;
+			children = (
+				9D3C4ED21F59117B00BA0C15 /* MainViewController.swift */,
+			);
+			path = "Main View";
+			sourceTree = "<group>";
+		};
+		9DDAF865204BAC3F00E08F36 /* Import New Data View */ = {
+			isa = PBXGroup;
+			children = (
+				9D5FB6021FC0D07000F27968 /* ImportNewDataViewController.swift */,
+			);
+			path = "Import New Data View";
+			sourceTree = "<group>";
+		};
+		9DDAF866204BAC7200E08F36 /* Custom Segues */ = {
+			isa = PBXGroup;
+			children = (
+				9D2F34D51FC6762B0080909F /* TopToBottomSegue.swift */,
+			);
+			path = "Custom Segues";
+			sourceTree = "<group>";
+		};
+		9DDAF867204BACB900E08F36 /* Misc Files */ = {
+			isa = PBXGroup;
+			children = (
+				9DFE3FF91F9A488400B18D78 /* MHS_0.csv */,
+				9D2F34D31FC669F40080909F /* TransitionManager.swift */,
+			);
+			path = "Misc Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
